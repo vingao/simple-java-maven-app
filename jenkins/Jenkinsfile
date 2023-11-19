@@ -1,15 +1,5 @@
 pipeline {
-    agent {
-        kubernetes {
-          defaultContainer 'ubn20-nodejs16-java11'
-          yaml buildpack(
-            pack(name: "ubn20-nodejs16-java11", version: "stable"),
-            pack(name: "ubn20-dind-mvn3-java11", version: "stable"),
-            pack(name: "alpine-dind", version: "stable"),
-            pack(name: "ubn20-awssso-python3", version: "stable")
-          )
-        }
-    }
+    agent any
 
     stages {
         stage('Build') {
